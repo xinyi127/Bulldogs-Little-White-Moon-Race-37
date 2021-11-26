@@ -1,0 +1,25 @@
+//永远不要忽略long long
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<algorithm>
+using namespace std;
+#define ll long long
+int main()
+{
+    ll a,h,b,k;
+    scanf("%lld%lld%lld%lld",&a,&h,&b,&k);
+    ll x,y;
+    if(h<=b)
+        x=1;
+    else x=h%b?h/b+1:h/b;
+    if(k<=a)
+        y=1;
+    else y=k%a?k/a+1:k/a;
+    if(x==y)
+        printf("%lld",(a+b)*x);
+    else if(x>y)
+        printf("%lld",y*(a+b)+a*10);
+    else printf("%lld",x*(a+b)+b*10);
+    return 0;
+}

@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<algorithm>
+using namespace std;
+#define scnaf scanf
+#define ll long long
+const int N=1e5+50;
+ll a[N],b[N],n;//a,f开心、b,p羞耻、
+struct ss
+{
+    ll f,p,i;
+}s[N];
+bool cmp(struct ss a,struct ss b)
+{
+    if(a.f==b.f)
+        return a.p<b.p;
+    return a.f>b.f;
+}
+void printff()
+{
+    for(int i=1;i<=n;i++)
+        printf("%lld,%lld,%lld\n",s[i].i,s[i].f,s[i].p);
+}
+int main()
+{
+    ll i,j,k;
+    scanf("%lld%lld",&n,&k);
+    for(i=1;i<=n;i++)
+        scanf("%lld",&a[i]),s[i].i=i;
+    for(i=1;i<=n;i++)
+        scanf("%lld",&b[i]);
+    for(i=1;i<=k;i++)
+        s[1].f+=a[i],s[1].p+=b[i];
+    for(i=2;i<=n;i++)
+    {
+        if(i+k-1<=n)
+            s[i].f=s[i-1].f-a[i-1]+a[i+k-1],s[i].p=s[i-1].p-b[i-1]+b[i+k-1];
+        else s[i].f=s[i-1].f-a[i-1],s[i].p=s[i-1].p-b[i-1];
+    }
+  //  printff();
+    sort(s+1,s+n+1,cmp);
+ //   printff();
+    printf("%lld",s[1].i);
+    return 0;
+}

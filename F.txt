@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<algorithm>
+using namespace std;
+#define scnaf scanf
+#define ll long long
+const int N=1e3+5;
+char s[N],c;
+ll m,n;
+ll slove()
+{
+    if((m*n)&1)
+        return 1;
+    else return 0;
+}
+int main()
+{
+    scnaf("%lld%lld",&n,&m);//行、列
+    if(slove())
+        printf("akai");
+    else printf("yukari");
+    return 0;
+}
